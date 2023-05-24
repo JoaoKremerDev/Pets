@@ -7,8 +7,7 @@ import { useContext } from 'react';
 
 
 const Header = () => {
-  const context = useContext(UserContext)
-  console.log(context)
+  const { data } = useContext(UserContext)
 
   return (
     <header className={styles.header}>
@@ -17,7 +16,6 @@ const Header = () => {
           <img src={Dogs} alt="" />
         </Link>
         <Link className={styles.login} to="/login">Login / Criar</Link>
-        {context.usuario}
       </nav>
     </header>
   )
