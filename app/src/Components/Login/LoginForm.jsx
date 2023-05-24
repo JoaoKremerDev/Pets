@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -7,14 +7,25 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-  }
+    fetch("https://dogsapi.origamid.dev/json/jwt-auth/v1/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then((response) => {
+        console.log(response);
+        return response.json();
+    }).then((json) => {
+        console.log(json)
+    })
+  };
 
   return (
     <section>
       <h1>Login</h1>
 
-      <form action=""onSubmit={handleSubmit}> 
+      <form action="" onSubmit={handleSubmit}>
         <input
           type="text"
           value={username}
@@ -23,16 +34,15 @@ const LoginForm = () => {
           }}
         />
 
-        <input 
-            type="password" 
-            value={password}
-            onChange={({target}) => {
-                setPassword(target.value)
-            }}
+        <input
+          type="password"
+          value={password}
+          onChange={({ target }) => {
+            setPassword(target.value);
+          }}
         />
 
         <button>Entrar</button>
-
       </form>
       <Link to="/login/criar">Cadastro</Link>
     </section>
