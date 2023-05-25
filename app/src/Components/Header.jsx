@@ -2,11 +2,11 @@ import "../App.css";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 import Dogs from "../Assets/dogs.svg";
-import { UserContext } from "../Context/useContext";
 import { useContext } from "react";
+import { UserContext } from "../Context/useContext";
 
 const Header = () => {
-  const { data } = useContext(UserContext);
+  const { data, userLogout} = useContext(UserContext);
 
   return (
     <header className={styles.header}>
@@ -23,6 +23,7 @@ const Header = () => {
             Login / Criar
           </Link>
         )}
+        <button onClick={userLogout}>Sair</button>
       </nav>
     </header>
   );
