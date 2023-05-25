@@ -5,9 +5,14 @@ const types = {
     regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: "Preencha um e-mail válido.",
   },
-  number: {
-    regex: /^\d+$/,
-    message: "Utilize somente números."
+  password: {
+    regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
+    message: `A senha deve atender aos seguintes critérios:
+
+    Pelo menos uma letra maiúscula.
+    Pelo menos uma letra minúscula.
+    Mínimo de 8 caracteres.
+    Pelo menos um caractere especial.`
   }
 };
 
