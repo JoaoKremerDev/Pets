@@ -40,7 +40,6 @@ export const UserStorage = ({ children }) => {
       const { url, options } = TOKEN_POST({ username, password });
       const tokenRes = await fetch(url, options);
       if (!tokenRes.ok) throw new Error(`Error: 'Ocorreu um erro.'`);
-      console.log(tokenRes);
       const { token } = await tokenRes.json();
       window.localStorage.setItem("token", token);
       await getUser(token);
